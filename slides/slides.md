@@ -57,7 +57,7 @@ ReactDOM.createRoot(document.querySelector("#root")).render(
 
 // React writes the following to the actual DOM:
 /*
-    <h1>Hello, World!</h1>
+    <h1 style="font-family: sans-serif">Hello, World!</h1>
 */
 ```
 
