@@ -238,10 +238,46 @@ wget -qO- https://get.pnpm.io/install.sh | sh -
 
 ## Create a new Vite project
 
-Vite is a bundler that allows us to take multiple JS files and combine them into one. It has built in support for JSX and lots of other cool features. It's extremely fast, and makes it easier to build large projects.
+Vite is a bundler that allows us to take multiple JS files and combine them into one. It has built in support for JSX and lots of other cool features. It's extremely fast, and makes it easier to build large projects. It includes a dev server, with features such as auto refresh, and easier debugging.
 
 The command below creates a new project called `my-react-app` using the `react` template.
 
 ```bash
 pnpm create vite my-react-app --template react
+cd my-react-app
+pnpm install
+pnpm run dev # Launches the dev server
 ```
+
+---
+
+# Clean up our React project
+
+Our React project comes with lots of starter code which we don't need.
+
+Delete the `assets` folder. Delete all the code in `App.jsx`, `index.css` and `App.css`. Currently, there will be an error; we will fix this later.
+
+---
+
+# Understanding the code
+
+Open `main.jsx`. There will be the following code:
+
+```jsx
+import React from "react";
+import ReactDOM from "react-dom/client";
+import App from "./App";
+import "./index.css";
+
+ReactDOM.createRoot(document.getElementById("root")).render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+);
+```
+
+This is very similar to the code we wrote ourselves. Note the addition of a component, `<React.StrictMode />` wrapping our App component. This is a component that tells React to be less lenient, and helps prevent bugs. We also import `./index.css`. The great thing about bundlers is that you can even import CSS, as bundlers can bundle all kinds of files into your JS, including CSS. Currently, this code is not working since it imports an App component, which we just deleted.
+
+---
+
+# Building the App component
