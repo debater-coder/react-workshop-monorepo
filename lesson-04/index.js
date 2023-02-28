@@ -1,7 +1,7 @@
 "use strict";
 
 function MyButton() {
-  return <button>I'm a button</button>;
+  return <button className="myButton">I'm a button</button>;
 }
 
 ReactDOM.createRoot(document.querySelector("#root")).render(

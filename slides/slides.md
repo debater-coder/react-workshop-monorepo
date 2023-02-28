@@ -194,3 +194,55 @@ ReactDOM.createRoot(document.querySelector("#root")).render(
   background-color: red;
 }
 ```
+
+---
+
+# Understanding components
+
+The most important thing about components is that they are 'pure functions'. This means that given the same inputs they give the same outputs. This is important because it means that React can cache the output of a component, and only re-render it when the inputs change. This is what makes React so fast.
+
+--- section
+layout: center
+
+---
+
+# Coming up next
+
+Before we move on to more interesting topics, such as component states, and passing data to our components, we will need to set up some tools to make our lives easier. This will be the topic of next lesson.
+
+--- section
+layout: cover
+background: https://source.unsplash.com/collection/94734566/1920x1080
+download: true
+
+---
+
+# React Workshop
+
+Lesson 5: Setting up a development environment
+
+---
+
+# Install Node.js (WSL)
+
+Follow [this](https://learn.microsoft.com/en-us/windows/dev-environment/javascript/nodejs-on-wsl) guide.
+
+---
+
+## Install pnpm
+
+`pnpm` is an extremely fast package manager. Most people use `npm` or `yarn`, but `pnpm` is much faster. The usage is almost identical to `npm`, so it's easy to switch.
+
+```bash
+wget -qO- https://get.pnpm.io/install.sh | sh -
+```
+
+## Create a new Vite project
+
+Vite is a bundler that allows us to take multiple JS files and combine them into one. It has built in support for JSX and lots of other cool features. It's extremely fast, and makes it easier to build large projects.
+
+The command below creates a new project called `my-react-app` using the `react` template.
+
+```bash
+pnpm create vite my-react-app --template react
+```
