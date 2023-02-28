@@ -1,8 +1,12 @@
 "use strict";
 
+function MyButton() {
+  return <button>I'm a button</button>;
+}
+
 ReactDOM.createRoot(document.querySelector("#root")).render(
-  <div style={{ fontFamily: "sans-serif" }}>
-    <h1>Hello, World!</h1>
-    <p>This is a paragraph</p>
+  <div>
+    <h1>Welcome to my app</h1>
+    <MyButton />
   </div>
 );

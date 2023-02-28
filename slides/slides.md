@@ -133,3 +133,64 @@ To use JSX, we need to add a Babel transform to our project. Babel is a JavaScri
 ```
 
 Don't forget to add `type="text/babel"` to tell Babel to transform the script.
+
+---
+
+# Components
+
+One of the best features of React is the ability to create components. You can think of components like custom tags. The advantage of using components is separation of concerns. In traditional web dev, we separate the content, styling, and logic. But in web app dev, it makes more sense to separate based on what the code actually does. So for example, a `Button` component would have the logic for all the styling, logic and content related to a `Button`. This also allows you to abstract away the details of the button to the `Button` component, meaning that the code using it does not need to care about implementation details. You could also imagine much more complicated components like `Modal`s, `Tab`s and `Menu`s.
+
+---
+
+# Components
+
+A component is just a function that returns some JSX. In JSX, custom components **must** start with a capital letters, as lowercase names are reserved for built in tags. They represeent parts of the UI.
+
+```jsx
+"use strict";
+
+function MyButton() {
+  return <button>I'm a button</button>;
+}
+
+ReactDOM.createRoot(document.querySelector("#root")).render(
+  <div>
+    <h1>Welcome to my app</h1>
+    <MyButton />
+  </div>
+);
+```
+
+---
+
+# JSX Syntax
+
+JSX is stricter than HTML. You have to close tags like `<br />`. Your component also can’t return multiple JSX tags. You have to wrap them into a shared parent, like a `<div>...</div>` or an empty `<>...</>` wrapper:
+
+---
+
+# Styles
+
+React is not very concerned about how you add your styles. Later in this course we will look at different styling solutions, that make it easier to make beautiful websites. To add a CSS class, use `className`, which works the same way as the HTML `class` attribute.
+
+```jsx
+"use strict";
+
+function MyButton() {
+  return <button className="myButton">I'm a button</button>;
+}
+
+ReactDOM.createRoot(document.querySelector("#root")).render(
+  <div>
+    <h1>Welcome to my app</h1>
+    <MyButton />
+  </div>
+);
+```
+
+```css
+/* index.css */
+.myButton {
+  background-color: red;
+}
+```
