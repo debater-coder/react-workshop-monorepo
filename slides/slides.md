@@ -281,3 +281,87 @@ This is very similar to the code we wrote ourselves. Note the addition of a comp
 ---
 
 # Building the App component
+
+```jsx
+import "./App.css";
+
+export default function App() {
+  return (
+    <>
+      <h1>Welcome to my app</h1>
+      <button>I am a button</button>
+    </>
+  );
+}
+```
+
+The `App.css` file is specifically for styling the App component, while `index.css` file is for all components
+
+---
+
+# Understanding State
+
+Now, lets start making our counter app. To do this properly we need to understand state. State are parts of your app that can change over time, like variables. You can think of state as a kind of variable that lasts over the duration of the component's lifetime.
+
+---
+
+# Counter attempt 1
+
+Let's try doing the simple way. In React there is an attribute you can add to elements called `onClick`. This will take a function that will dictate what happens when we click on an element. In React if we want to put some JS code inside our JSX code, we use curly brackets.
+
+```jsx
+import "./App.css";
+
+export default function App() {
+  let count = 0;
+
+  function increment() {
+    count++;
+  }
+
+  return (
+    <>
+      <h1>{count}</h1>
+      <button onClick={increment}>Increase count</button>
+    </>
+  );
+}
+```
+
+---
+
+# Counter attempt 2
+
+Let's look at why that didn't work. Firstly, it breaks one of the rules of React. Remember how we said that components are 'pure functions', meaning that it returns the same outputs given the same inputs. This breaks this rule, because it will return different counts based on some 'internal' state. Secondly, it dosen't work because no one told React it has to update the screen. React is smart, and when it detects changes in state, it will automatically redraw all the components that depend on that state. But it turns out we are using the wrong kind of state. Let's look at the React way to do this in the next slide.
+
+---
+
+# Counter attempt 2
+
+React has a feature called 'hooks'. Hooks are a way to introduce extra inputs in your component, that change over time. There are lots of different types of hooks, but the hook we want to use is called `useState`. Here is the correct way to implement this counter using `useState`. Look at array destructuring: https://javascript.info/destructuring-assignment
+
+```jsx
+import "./App.css";
+import { useState } from "react";
+
+export default function App() {
+  const [count, setCount] = useState(0);
+
+  function increment() {
+    setCount(count + 1);
+  }
+
+  return (
+    <>
+      <h1>{count}</h1>
+      <button onClick={increment}>Increase count</button>
+    </>
+  );
+}
+```
+
+---
+
+# Why did this work?
+
+The difference between this approach and the previous approach, is that now React 'owns' the state. That means that it knows whenever it changes, because you explicitly call `setCount` function, letting it know to rerender all the components and elements nested inside this component. Note that React changes this state after it renders, so throughout the render function, the state is still the same, and then it only changes afterwards.
